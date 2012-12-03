@@ -1,0 +1,23 @@
+﻿@import url("../reset.css");
+
+.block{
+    border: 1px solid #cccccc;
+    border-radius:3px;
+    margin: auto;
+}
+
+
+.block .title{
+    background: #eeeeee;
+    border-bottom: 1px solid #cccccc;
+    background-image: -moz-linear-gradient(top, #ffffff, #eeeeee);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#ffffff),color-stop(1,#eeeeee));
+}
+
+.block .title h3{
+    margin:10px;
+}
+
+.block .body p{
+    margin: 10px;
+}

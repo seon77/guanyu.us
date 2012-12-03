@@ -1,0 +1,14 @@
+﻿@import url("../reset.css");
+
+.btn{
+    border: 1px solid #cccccc;
+    border-radius:3px;
+    margin: auto;
+    background: -moz-linear-gradient(top, #ffffff, #eeeeee);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#ffffff),color-stop(1,#eeeeee));
+    display: inline-block;
+}
+.btn:hover{
+    background: -moz-linear-gradient(top, #dfdfdf, #eeeeee);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#dfdfdf),color-stop(1,#eeeeee));
+}
