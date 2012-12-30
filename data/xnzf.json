@@ -1,0 +1,17 @@
+{
+    "code":"A00000",
+    "data":{
+        "title":"新年祝福",
+        "time":"2012-12-30 13:12:17",
+        "content":'<p>加入收藏: ctrl + D</p>' +
+        '<p>关闭单个网页: ctrl + F4 / w</p>' +
+        '<p>切换页签: ctrl + Tab / pageUp / pageDown</p>' +
+        '<p>在页面中查找: ctrl + f / g</p>' +
+        '<p>查看历史记录: ctrl + h</p>' +
+        '<p>查看下载内容: ctrl + j</p>' +
+        '<p>通过搜索引擎搜索: ctrl + k</p>' +
+        '<p>光标移到地址栏: ctrl + l</p>' +
+        '<p>打开书签管理器: ctrl + shirt + o</p>' +
+        '<p>打开新页签: ctrl + t</p>'
+    }
+}
