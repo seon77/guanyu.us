@@ -1,0 +1,6 @@
+    <div class="post">
+        <p class="byline"><small>post by seon ${time}</small></p>
+        <div class="entry">
+            ${content}
+        </div>
+    </div>
