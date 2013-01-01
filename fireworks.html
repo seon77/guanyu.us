@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        body{background-color:rgba(0,0,30,1);}
+        .box1{position : absolute;left : 0px;top : 0px;}
+    </style>
+    <script type="text/javascript" src="http://static.qiyi.com/js/lib/sea1.2.js"></script>
+</head>
+<body>
+    <div class="box1">
+        <canvas id="fireworks">
+        </canvas>
+    </div>
+    <script type="text/javascript">
+        Q.ready(function() {
+            setTimeout(function(){
+                location.href = 'index.html';
+            },30000);
+            var canvas = Q.$('#fireworks');
+            var viewWidth = Q.page.getViewWidth();
+            var viewHeight = Q.page.getViewHeight()
+            canvas.attr('width',viewWidth);
+            canvas.attr('height',viewHeight);
+            var cxt;
+            var particles = [];
+            init();
+            function init() {
+                cxt = document.getElementById("fireworks").getContext("2d");
+                document.getElementById("fireworks").addEventListener("click", click);
+                setInterval(update, 1000 / 60);
+            }
+            function update() {
+                if (Math.random() < 0.1) {
+                    if (Math.random() < 1)
+                    {
+                        x = Math.random() * viewWidth;
+                        y = Math.random() * viewHeight;
+                        setTimeout(function(){
+                            explode(x, y, randomColor());
+                            explode(x, y, randomColor());
+                        },1000);
+                    }
+                    else
+                        setTimeout(function(){
+                            explode(Math.random() * viewWidth, Math.random() * viewHeight, randomColor());
+                        },1000);
+                }
+                cxt.clearRect(0, 0, viewWidth, viewHeight);
+                for (var i = particles.length - 1; i >= 0; i--) {
+                    var p = particles[i];
+                    p.vx *= p.deceleration;
+                    p.vy *= p.deceleration;
+                    p.vy += p.gravity;
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.energy *= p.deceleration;
+                    p.a = Math.atan2(p.vy, p.vx);
+                    p.tx = p.x + p.length * Math.cos(p.a);
+                    p.ty = p.y + p.length * Math.sin(p.a);
+                    if (p.energy < 0.05) {
+                        particles.splice(i, 1);
+                    } else {
+                        cxt.beginPath();
+                        cxt.strokeStyle = p.color;
+                        cxt.moveTo(p.x, p.y);
+                        cxt.lineTo(p.tx, p.ty);
+                        cxt.lineWidth = 2;
+                        cxt.stroke();
+                        cxt.closePath();
+                    }
+                }
+            }
+            function explode(x, y, color) {
+                var c = 800;
+                while (c-->0)
+                 {
+                    var p = {};
+                    p.energy = Math.random() * 2;
+                    var angle = Math.random() * Math.PI * 2;
+                    var v = Math.random() * 20;
+                    p.vx = Math.cos(angle) * v;
+                    p.vy = Math.sin(angle) * v;
+                    p.x = x;
+                    p.y = y;
+                    p.color = color;
+                    p.deceleration = 0.95;
+                    p.gravity = 0.05;
+                    p.length = (2 / p.energy > 4) ? (2 / p.energy) : 4;
+                    particles.push(p);
+                }
+            }
+            function randomColor() {
+                var r,
+                g,
+                b,
+                a;
+                r = Math.floor(Math.random() * 255);
+                g = Math.floor(Math.random() * 255);
+                b = Math.floor(Math.random() * 255);
+                return "rgb(" + r + "," + g + "," + b + ")";
+            }
+            function click(e) {
+                var x = e.offsetX;
+                var y = e.offsetY;
+                if (Math.random() < 1) {
+                    setTimeout(function(){
+                        explode(x, y, randomColor());
+                        explode(x, y, randomColor());
+                    },1000);
+                    
+                }
+                 else
+                    setTimeout(function(){
+                        explode(x, y, randomColor());
+                    },1000);
+            }
+        });
+    </script>
+</audio>
+</body>
+</html>
